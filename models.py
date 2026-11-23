@@ -22,7 +22,7 @@ fernet = Fernet(FERNET_KEY.encode())
 CPF_HASH_KEY = CPF_HASH_KEY.encode()
 
 # create an engine to connect to the database
-engine = create_engine('sqlite:///saep_db.sqlite3', echo=False)
+engine = create_engine('sqlite:///saep_db.db', echo=False)
 
 # create a base class for declarative class definitions
 #Base = declarative_base()
@@ -188,7 +188,7 @@ class Pet(Base):
 
     id = Column(Integer, primary_key=True)
     raca = Column(String(100), nullable=False)
-    data_nascimento = Column(Datetime, nullable=False)
+    data_nascimento = Column(Date, nullable=False)
     tutores_id = Column(Integer, ForeignKey('tutores.id'), nullable=False)
     criado_em = Column(DateTime, server_default=func.now())
 
@@ -210,7 +210,7 @@ class Agendamento(Base):
     data_hora = Column(DateTime, nullable=False)
     motivo = Column(String(100), nullable=False)
     criado_em = Column(DateTime, server_default=func.now())
-    pet_id = Column(Integer, ForeignKey('carros.id'), nullable=False)
+    pet_id = Column(Integer, ForeignKey('pet.id'), nullable=False)
     criado_em = Column(DateTime, server_default=func.now())
 
     pet_agenda_join = relationship(

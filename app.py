@@ -213,8 +213,8 @@ def tutor_excluir(id):
     tutor = db_session.get(Tutor, id)
 
     if not tutor:
-        flash('Proprietário não encontrado!', 'danger')
-        return redirect(url_for('proprietario'))
+        flash('Tutor não encontrado!', 'danger')
+        return redirect(url_for('tutor'))
 
     # Verifica se o tutor possui animais
     if tutor.pets_join:
@@ -225,7 +225,7 @@ def tutor_excluir(id):
         db_session.delete(tutor)
         db_session.commit()
 
-        flash('Proprietário excluído com sucesso!', 'success')
+        flash('Tutor excluído com sucesso!', 'success')
 
     except Exception as e:
         db_session.rollback()

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Editar Tutor</h2>
+
+<form method="POST" action="{{ url_for('tutor_editar', id=tutor.id ) }}">
+
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{{tutor.nome}}" required >
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone" value="{{tutor.telefone}}" required >
+
+    <label>CPF atual:[ {{tutor.cpf_mascarado}} ]</label>
+    <input type="text" name="cpf"  >
+
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+
+{% endblock %}

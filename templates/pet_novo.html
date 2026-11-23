@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Cadastrar Pet</h2>
+
+<form method="POST">
+    <label>Tutor:</label><br>
+    <select name="tutor_id" required>
+        {% for t in tutor %}
+        <option value="{{ t.id }}">{{ t.nome }} ({{ t.cpf_mascarado }})</option>
+        {% endfor %}
+    </select><br><br>
+    <label>Nome:</label><br>
+    <input type="text" name="nome" required><br><br>
+    <label>Raça:</label><br>
+    <input type="text" name="raca" required><br><br>
+    <label>Espécie</label><br>
+    <input type='text' name="especie" required><br><br>
+    <label>Data de Nascimento</label>
+    <input type="date" name="data_nascimento" required><br><br>
+    <button type="submit">Cadastrar Pet</button>
+</form>
+{% endblock %}

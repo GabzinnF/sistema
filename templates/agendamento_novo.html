@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h2>Novo Agendamento</h2>
+
+<form method="POST" action="{{ url_for('agendamento_novo') }}">
+
+    <label>Carro:</label>
+    <select name="pet_id" required>
+        <option value="">Selecione um pet</option>
+
+        {% for pet in pets %}
+            <option value="{{ pet.id }}">
+                {{ pet.raca }} - {{ pet.especie }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Data e Hora:</label>
+    <input type="datetime-local" name="data_hora" required>
+
+    <br><br>
+
+    <label>Motivo:</label>
+    <textarea name="motivo"  required>
+    </textarea>
+
+
+    <br><br>
+
+    <button type="submit">Agendar</button>
+
+</form>
+
+{% endblock %}

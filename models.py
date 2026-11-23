@@ -187,8 +187,10 @@ class Pet(Base):
     __tablename__ = 'pets'
 
     id = Column(Integer, primary_key=True)
+    nome = Column(String(100), nullable=False)
     raca = Column(String(100), nullable=False)
     data_nascimento = Column(Date, nullable=False)
+    especie = Column(String(100), nullable=False)
     tutores_id = Column(Integer, ForeignKey('tutores.id'), nullable=False)
     criado_em = Column(DateTime, server_default=func.now())
 
@@ -209,8 +211,7 @@ class Agendamento(Base):
     id = Column(Integer, primary_key=True)
     data_hora = Column(DateTime, nullable=False)
     motivo = Column(String(100), nullable=False)
-    criado_em = Column(DateTime, server_default=func.now())
-    pet_id = Column(Integer, ForeignKey('pet.id'), nullable=False)
+    pet_id = Column(Integer, ForeignKey('pets.id'), nullable=False)
     criado_em = Column(DateTime, server_default=func.now())
 
     pet_agenda_join = relationship(
